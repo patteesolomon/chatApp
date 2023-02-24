@@ -68,23 +68,50 @@ the compiler, or even the machine running the algorithm.
 */
 
 /*** https://btholt.github.io/complete-intro-to-computer-science/spatial-complexity
- * Linear
-Let's say we have an algorithm that for every item in the array, it needs to create another array in the process of sorting it. So for an array of length 10, our algorithm will create 10 arrays. For an array of 100, it'd create 100 extra arrays (or something close, remember these are broad strokes, not exact.) This would be O(n) in terms of its spatial complexity. We'll do some sorts that do this.
+ * Linear 
+Let's say we have an algorithm that for every item in the array,
+ it needs to create another array in the process of sorting it. 
+ So for an array of length 10, our algorithm will create 10 arrays.
+ For an array of 100, it'd create 100 extra arrays 
+ (or something close, remember these are broad strokes, not exact.)
+  This would be O(n) in terms of its spatial complexity.
+   We'll do some sorts that do this.
 
-Logrithmic
-What about another for every item in the array, it needed to create a diminishing amount of extra arrays. For example: for an array of length 10, it'd create 7 arrays. For an array of 100, it'd create 12 arrays. For an array of 1000, it'd created 20 arrays. This would be O(log n).
+Logrithmic https://www.expii.com/t/what-are-logarithmic-scales-4432
+What about another for every item in the array, 
+it needed to create a diminishing amount of extra arrays.
+For example: for an array of length 10, it'd create 7 arrays. For an array of 100, 
+it'd create 12 arrays. For an array of 1000, it'd created 20 arrays.
+ This would be O(log n). https://www.indeed.com/career-advice/career-development/logarithmic-scale
+y = logbx <= formula 
+more info = > https://www.youtube.com/watch?v=fnhFneOz6n8
 
 Constant
-What if we didn't create any extra arrays when we did our algorithm? We just used the same space we were given when we first started. Or if we created just 10 arrays, no matter how long the array is? This would be O(1) since it's constant no matter what. Its spatial need don't increase with longer arrays.
+What if we didn't create any extra arrays when we did our algorithm? 
+We just used the same space we were given when we first started. 
+Or if we created just 10 arrays, no matter how long the array is? 
+This would be O(1) since it's constant no matter what. 
+Its spatial need don't increase with longer arrays.
 
 Quadratic
 Lastly, what if we had an app that calculates the distances between zip / postal codes?
 
-A zip code in the United States is a five digit number that represents a fairly small area of land. 98109 is in the middle of Seattle, Washington while 10001 is in the middle of New York City, NY.
+A zip code in the United States is a five digit number that represents a fairly small area of land.
+98109 is in the middle of Seattle, Washington while 10001 is in the middle of New York City, NY.
 
-If a user asks what's the distance between 98109 and 10001, we'd spit out something like 2,800 miles or 4,500 km. Now, let's say for every zip code we add to our system, we calculate the distance between every other zip code in our system and store it. If there were only 10 zip codes, sure, that'd be easy, but there are nearly 42,000 zip codes in the United States with more being added. The spatial complexity on this would be O(n²) because for every new zip code we add, we'd have to add 42,000 new items as well.
+If a user asks what's the distance between 98109 and 10001,
+ we'd spit out something like 2,800 miles or 4,500 km.
+  Now, let's say for every zip code we add to our system,
+  we calculate the distance between every other zip code in our system and store it. 
+  If there were only 10 zip codes, sure, that'd be easy,
+   but there are nearly 42,000 zip codes in the United States with more being added. 
+   The spatial complexity on this would be O(n²) because for every new zip code we add,
+    we'd have to add 42,000 new items as well.
 
-Is this a good idea? It depends! A company I used to work at did exactly this because calling the API to get this data was really expensive so they did all the computational work once to find out and just stored it. It was a huge database but that ended up being way cheaper than the API.
+Is this a good idea? It depends! A company I used to work at did exactly 
+this because calling the API to get this data was really expensive so they 
+did all the computational work once to find out and just stored it. 
+It was a huge database but that ended up being way cheaper than the API.
 
 I will say O(n²) in spatial complexity is pretty rare and a big red flag.
 
