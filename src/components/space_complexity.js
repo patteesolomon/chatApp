@@ -116,27 +116,56 @@ It was a huge database but that ended up being way cheaper than the API.
 I will say O(n²) in spatial complexity is pretty rare and a big red flag.
 
 Okay, sure, but why
-As before, this is just a tool to make sure your design fits your needs. One isn't necessarily better than the other. And very frequently you need to make the trade off of computational complexity vs spatial. Some algoriths eat a lot of memory but go fast and there are lots that eat zero memory but go slow. It just depends on what your needs are.
+As before, this is just a tool to make sure your design 
+fits your needs. One isn't necessarily better than the other. 
+And very frequently you need to make the trade off of computational
+ complexity vs spatial. Some algoriths eat a lot of memory
+  but go fast and there are lots that eat zero memory but go slow. 
+  It just depends on what your needs are.
 
-Here's an example: let's say you're writing code that's going to be run a PlayStation 3 and it needs to sort 1000 TV shows according to what show you think the customer is going to want to see. PS3s have a decent processor but very little memory available to apps. In this case, we'd want to trade off in favor of spatial complexity and trade off against computational complexity: the processor can do more work so we can save memory.
+Here's an example: let's say you're writing code that's
+ going to be run a PlayStation 3 and it needs to sort 1000 
+ TV shows according to what show you think the customer is
+  going to want to see. PS3s have a decent processor but 
+  very little memory available to apps. In this case, we'd 
+  want to trade off in favor of spatial complexity and 
+  trade off against computational complexity: 
+  the processor can do more work so we can save memory.
 
-Okay, now same problem but we have 1,000,000 videos and a big, beefy server in the cloud to do the work for us. In this case we're not resource constrained by either memory or compute so we can feel free to trade off in favor of computational since we want to respond to the user as soon as we can.
+Okay, now same problem but we have 1,000,000 videos and a big, 
+beefy server in the cloud to do the work for us.
+ In this case we're not resource constrained by either memory
+  or compute so we can feel free to trade off in favor of
+   computational since we want to respond to the user as soon as we can.
  */
 
 /*https://www.interviewcake.com/article/javascript/big-o-notation-time-and-space-complexity
 /**
  * 
  * The idea behind big O notation
-Big O notation is the language we use for talking about how long an algorithm takes to run. It's how we compare the efficiency of different approaches to a problem.
+Big O notation is the language we use for talking about how long an algorithm takes to run.
+ It's how we compare the efficiency of different approaches to a problem.
 
-It's like math except it's an awesome, not-boring kind of math where you get to wave your hands through the details and just focus on what's basically happening.
+It's like math except it's an awesome,
+ not-boring kind of math where you get to wave your hands through the details 
+ and just focus on what's basically happening.
 
-With big O notation we express the runtime in terms of—brace yourself—how quickly it grows relative to the input, as the input gets arbitrarily large.
+With big O notation we express the runtime in terms 
+of—brace yourself—how quickly it grows relative to the input,
+ as the input gets arbitrarily large.
 
 Let's break that down:
 
-how quickly the runtime grows—It's hard to pin down the exact runtime of an algorithm. It depends on the speed of the processor, what else the computer is running, etc. So instead of talking about the runtime directly, we use big O notation to talk about how quickly the runtime grows.
-relative to the input—If we were measuring our runtime directly, we could express our speed in seconds. Since we're measuring how quickly our runtime grows, we need to express our speed in terms of...something else. With Big O notation, we use the size of the input, which we call "
+how quickly the runtime grows—It's hard to pin down 
+the exact runtime of an algorithm. 
+It depends on the speed of the processor,
+ what else the computer is running, etc.
+  So instead of talking about the runtime directly, 
+  we use big O notation to talk about how quickly the runtime grows.
+relative to the input—If we were measuring our runtime directly, 
+we could express our speed in seconds. Since we're measuring 
+how quickly our runtime grows, we need to express our speed in terms of...
+Something else. With Big O notation, we use the size of the input, which we call "
 �
 n." So we can say things like the runtime grows "on the order of the size of the input" (
 �
@@ -152,13 +181,16 @@ O(n)) or "on the order of the square of the size of the input" (
 O(n 
 2
  )).
-as the input gets arbitrarily large—Our algorithm may have steps that seem expensive when 
+as the input gets arbitrarily large—Our 
+algorithm may have steps that seem expensive when 
 �
 n is small but are eclipsed eventually by other steps as 
 �
-n gets huge. For big O analysis, we care most about the stuff that grows fastest as the input grows, because everything else is quickly eclipsed as 
+n gets huge. For big O analysis, we care most about the stuff that grows 
+fastest as the input grows, because everything else is quickly eclipsed as 
 �
-n gets very large. (If you know what an asymptote is, you might see why "big O analysis" is sometimes called "asymptotic analysis.")
+n gets very large. (If you know what an asymptote is, 
+  you might see why "big O analysis" is sometimes called "asymptotic analysis.")
 If this seems abstract so far, that's because it is. Let's look at some examples.
 
 Some examples
@@ -172,7 +204,9 @@ This function runs in
 (
 1
 )
-O(1) time (or "constant time") relative to its input. The input array could be 1 item or 1,000 items, but this function would still just require one "step."
+O(1) time (or "constant time") relative to its input. 
+The input array could be 1 item or 1,000 items, 
+but this function would still just require one "step."
 
   function printAllItems(items) {
   items.forEach(item => {
@@ -188,7 +222,9 @@ This function runs in
 )
 O(n) time (or "linear time"), where 
 �
-n is the number of items in the array. If the array has 10 items, we have to print 10 times. If it has 1,000 items, we have to print 1,000 times.
+n is the number of items in the array. If the array has 10 items, 
+we have to print 10 times. If it has 1,000 items, 
+we have to print 1,000 times.
 
   function printAllPossibleOrderedPairs(items) {
   items.forEach(firstItem => {
@@ -218,7 +254,9 @@ n
 )
 O(n 
 2
- ) time (or "quadratic time"). If the array has 10 items, we have to print 100 times. If it has 1,000 items, we have to print 1,000,000 times.
+ ) time (or "quadratic time"). If the array has 10 items, 
+ we have to print 100 times. If it has 1,000 items, 
+ we have to print 1,000,000 times.
 
 N could be the actual input, or the size of the input
 Both of these functions have 
@@ -243,12 +281,16 @@ function printAllItems(items) {
 JavaScript
 So sometimes 
 �
-n is an actual number that's an input to our function, and other times 
+n is an actual number that's an
+ input to our function, and other times 
 �
-n is the number of items in an input array (or an input map, or an input object, etc.).
+n is the number of items in an input array
+ (or an input map, or an input object, etc.).
 
 Drop the constants
-This is why big O notation rules. When you're calculating the big O complexity of something, you just throw out the constants. So like:
+This is why big O notation rules.
+ When you're calculating the big O complexity of something,
+you just throw out the constants. So like:
 
   function printAllItemsTwice(items) {
   items.forEach(item => {
@@ -310,13 +352,16 @@ O(1+n/2+100), which we just call
 )
 O(n).
 
-Why can we get away with this? Remember, for big O notation we're looking at what happens as 
+Why can we get away with this? Remember, 
+for big O notation we're looking at what happens as 
 �
 n gets arbitrarily large. As 
 �
-n gets really big, adding 100 or dividing by 2 has a decreasingly significant effect.
+n gets really big, adding 100 or dividing by
+ 2 has a decreasingly significant effect.
 
-Keep up the momentum! Sign up to get a data structures and algorithms practice question sent to you every week.
+Keep up the momentum! Sign up to get a data
+ structures and algorithms practice question sent to you every week.
 
 me@gmail.com
 No spam, ever. Easy unsubscribe.
@@ -430,12 +475,14 @@ O((n+30)∗(n+5)) is
 O(n 
 2
  )
-Again, we can get away with this because the less significant terms quickly become, well, less significant as 
+Again, we can get away with this because the less 
+significant terms quickly become, well, less significant as 
 �
 n gets big.
 
 We're usually talking about the "worst case"
-Often this "worst case" stipulation is implied. But sometimes you can impress your interviewer by saying it explicitly.
+Often this "worst case" stipulation is implied.
+ But sometimes you can impress your interviewer by saying it explicitly.
 
 Sometimes the worst case runtime is significantly worse than the best case runtime:
 
@@ -452,14 +499,17 @@ Sometimes the worst case runtime is significantly worse than the best case runti
 }
 
 JavaScript
-Here we might have 100 items in our haystack, but the first item might be the needle, in which case we would return in just 1 iteration of our loop.
+Here we might have 100 items in our haystack, 
+but the first item might be the needle, 
+in which case we would return in just 1 iteration of our loop.
 
 In general we'd say this is 
 �
 (
 �
 )
-O(n) runtime and the "worst case" part would be implied. But to be more specific we could say this is worst case 
+O(n) runtime and the "worst case" part would be implied.
+ But to be more specific we could say this is worst case 
 �
 (
 �
@@ -469,10 +519,16 @@ O(n) and best case
 (
 1
 )
-O(1) runtime. For some algorithms we can also make rigorous statements about the "average case" runtime.
+O(1) runtime. For some algorithms we can also make rigorous
+ statements about the "average case" runtime.
 
 Space complexity: the final frontier
-Sometimes we want to optimize for using less memory instead of (or in addition to) using less time. Talking about memory cost (or "space complexity") is very similar to talking about time cost. We simply look at the total size (relative to the size of the input) of any new variables we're allocating.
+Sometimes we want to optimize for using less memory
+ instead of (or in addition to) using less time. 
+Talking about memory cost (or "space complexity") 
+is very similar to talking about time cost.
+ We simply look at the total size 
+ (relative to the size of the input) of any new variables we're allocating.
 
 This function takes 
 �
@@ -504,7 +560,10 @@ O(n) space (the size of hiArray scales with the size of the input):
 }
 
 JavaScript
-Usually when we talk about space complexity, we're talking about additional space, so we don't include space taken up by the inputs. For example, this function takes constant space even though the input has 
+Usually when we talk about space complexity, 
+we're talking about additional space,
+ so we don't include space taken up by the inputs.
+  For example, this function takes constant space even though the input has 
 �
 n items:
 
@@ -519,18 +578,33 @@ n items:
 }
 
 JavaScript
-Sometimes there's a tradeoff between saving time and saving space, so you have to decide which one you're optimizing for.
+Sometimes there's a tradeoff between saving time and saving space,
+ so you have to decide which one you're optimizing for.
 
 Big O analysis is awesome except when it's not
-You should make a habit of thinking about the time and space complexity of algorithms as you design them. Before long this'll become second nature, allowing you to see optimizations and potential performance issues right away.
+You should make a habit of thinking about the time and
+ space complexity of algorithms as you design them.
+  Before long this'll become second nature,
+   allowing you to see optimizations and potential performance issues right away.
 
 Asymptotic analysis is a powerful tool, but wield it wisely.
 
-Big O ignores constants, but sometimes the constants matter. If we have a script that takes 5 hours to run, an optimization that divides the runtime by 5 might not affect big O, but it still saves you 4 hours of waiting.
+Big O ignores constants, but sometimes the constants matter. 
+If we have a script that takes 5 hours to run, an optimization 
+that divides the runtime by 5 might not affect big O, but it still saves you 
+4 hours of waiting.
 
-Beware of premature optimization. Sometimes optimizing time or space negatively impacts readability or coding time. For a young startup it might be more important to write code that's easy to ship quickly or easy to understand later, even if this means it's less time and space efficient than it could be.
+Beware of premature optimization. Sometimes optimizing time
+ or space negatively impacts readability or coding time. 
+ For a young startup it might be more important to write code
+  that's easy to ship quickly or easy to understand later, 
+  even if this means it's less time and space efficient than it could be.
 
-But that doesn't mean startups don't care about big O analysis. A great engineer (startup or otherwise) knows how to strike the right balance between runtime, space, implementation time, maintainability, and readability.
+But that doesn't mean startups don't care about big O analysis.
+ A great engineer (startup or otherwise) 
+ knows how to strike the right balance between runtime,
+  space, implementation time, maintainability, and readability.
 
-You should develop the skill to see time and space optimizations, as well as the wisdom to judge if those optimizations are worthwhile.
+You should develop the skill to see time and space optimizations,
+ as well as the wisdom to judge if those optimizations are worthwhile.
  */
